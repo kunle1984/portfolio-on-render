@@ -1,0 +1,78 @@
+{% extends 'portfolio/main.html' %}
+{%load static%}
+{%block title%}Project Description{%endblock%}
+{%block info%}{%endblock%}
+{%block menu%}
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-lg-5">
+        <li class="nav-item">
+            <a class="nav-link " href="{%url 'home'%}">Home</a>
+        </li>
+    </ul>
+</div>
+{%endblock%}
+
+{% block about %}
+<section class="about section-padding" id="section_2">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            
+            <div class="col">
+                <img src="{{blog.image.url}}" class="about-image img-fluid" alt="">
+                    <br>
+                    <br>
+                        <h2 >{{blog.title}}</h2>
+                        <small> Posted  {{blog.create | timesince}} ago</small>
+                            <p> Posted By: {{blog.user.username}}</p>
+
+                    <p class="justify-content-md-center">{{blog.description |urlize}}</p>
+                </div>
+            <div class="col col-sm-2"><h4>Categories</h4>
+                    <ul  class="list-group list-group-flush">
+                        {% for category in categories%}
+                        <li class="list-group-item">
+                            <a class="nav-link"  href="{% url 'blog-by-category' category.name%} ">{{category.name}}</a>
+                          </li>
+                            {%endfor%}
+                    </ul>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+{%endblock%}
+
+{% block project %}
+
+<section class="projects section-padding" id="section_4">
+    <div class="container">
+        <div class="row">
+           
+            <div class="clearfix"></div>
+            {% for image in images%}
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="projects-thumb">
+                    <div class="projects-info">
+                        <h4 class="projects-title">{{image.title}}</h4>
+                        <p >{{image.description | linebreaks| truncatewords:15}}</p>
+
+                      
+                    </div>
+                   
+                            <hr>
+                    <a href="{{image.image.url}}" class="popup-image">
+                        <img src="{{image.image.url}}" class="projects-image img-fluid" alt="">
+                    </a>
+                </div>
+            </div>
+                {% endfor %}
+            
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

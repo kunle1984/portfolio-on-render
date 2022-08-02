@@ -1,0 +1,42 @@
+{% extends 'portfolio/main.html' %}
+{%load static%}
+{%block title%}Success{%endblock%}
+{%block info%}{%endblock%}
+{%block project%}{%endblock%}
+{%block menu%}
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-lg-5">
+        <li class="nav-item">
+            <a class="nav-link " href="{%url 'home'%}">Home</a>
+        </li>
+    </ul>
+</div>
+{%endblock%}
+
+{% block about %}
+<section class="about section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 mt-5 mt-lg-0">
+                <div class="about-thumb">
+
+                    <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
+                        <h2 class="text-white me-4 mb-0">Thanks for your message!</h2>
+
+                       
+                    </div>
+
+                    <h3>Your Message has been sent, i will get back to you shortly </h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+{%endblock%}
+

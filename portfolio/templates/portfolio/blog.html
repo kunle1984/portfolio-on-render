@@ -1,0 +1,59 @@
+{% extends 'portfolio/main.html' %}
+{%load static%}
+{%block title%}Blogs{%endblock%}
+{%block info%}{%endblock%}
+{%block menu%}
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    
+    <ul class="navbar-nav ms-lg-5">
+        <li class="nav-item">
+       <a class="nav-link" href="{%url 'home'%}">back</a>
+        </li>
+    </ul>
+</div>
+{%endblock%}
+
+{%block about%}
+<br>
+<br>
+<div class="container">
+    <div class="row"> 
+        <div class="col-md-9">
+            <div class="row">
+    {% for blog in blogs%}
+    <div class="col-md-4">
+       
+<div class="card" >
+    <img class="card-img-top thumb" style="height:200px; object-fits:cover;" src="{{blog.image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{blog.title| title|truncatewords:8}}</h5>
+      <p class="card-text">{{blog.description|truncatewords:10}}</p>
+      <a href="{%url 'blog-view' blog.slug%}" class="btn btn-primary"> Read more..</a>
+    </div>
+</div>
+</div>
+{%endfor%}
+</div>
+</div>
+<div class="col-md-3">
+
+    <h4>Categories</h4>
+    <ul  class="list-group list-group-flush">
+        <li class="list-group-item">
+            <a class="nav-link"  href="{% url 'blogs'%}">All</a>
+          </li>
+        {% for category in categories%}
+        <li class="list-group-item">
+            <a class="nav-link"  href="{% url 'blogs'%}?category={{category.name}}">{{category.name}}</a>
+          </li>
+            {%endfor%}
+    </ul>
+</div>   
+
+
+</div>
+  </div>
+{%endblock%}
+
+{%block project%}{%endblock%}
