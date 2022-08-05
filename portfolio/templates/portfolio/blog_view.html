@@ -26,7 +26,7 @@
                         <small> Posted  {{blog.create | timesince}} ago</small>
                             <p> Posted By: {{blog.user.username}}</p>
 
-                    <p class="justify-content-md-center">{{blog.description |urlize}}</p>
+                    <p class="justify-content-md-center">{{blog.description |urlize|linebreaks}}</p>
                 </div>
             <div class="col-md-3"><h4>Categories</h4>
                     <ul  class="list-group list-group-flush">
