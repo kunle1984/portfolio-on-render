@@ -159,10 +159,10 @@ EMAIL_HOST_PASSWORD =email_host_password
 RECIPIENT_ADDRESS=recipient_address
 
 CORS_ALLOWED_ORIGINS = [
-        'https://kunle-portfolio-production.up.railway.app',
+        'https://k-portfolio-production.up.railway.app',
         "http://localhost:8000"
         
     ]
 
-CSRF_TRUSTED_ORIGINS = ['https://kunle-portfolio-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://k-portfolio-production.up.railway.app']
 CORS_ALLOW_CREDENTIALS=True
