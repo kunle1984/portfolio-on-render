@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-zj#!7+#%gug326eye_6f7d5_vn!w=eq2c6()q*(%d*%hag=+-c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =True
 
-ALLOWED_HOSTS = ['kunle-portfolio.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio',
-    'storages'
+    'corsheaders',
 ]
 
 
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -80,15 +81,11 @@ WSGI_APPLICATION = 'myportfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'wdVYhj65bTvcfrWhgYbZ',
-        'HOST': 'containers-us-west-74.railway.app',
-        'PORT': '7073',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -140,12 +137,7 @@ STATICFILES_DIR=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#S3 setup
-AWS_QUERYSTRING_AUTH=False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID='AKIATRQH4QNYICQ6YVWF'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='kunleportfolio'
+
 
 email_host= 'smtp.risinghopegirlseducation.com'
 email_port =465
@@ -166,3 +158,11 @@ EMAIL_HOST_PASSWORD =email_host_password
 # To email: contact form
 RECIPIENT_ADDRESS=recipient_address
 
+CORS_ALLOWED_ORIGINS = [
+        'https://kunle-portfolio-production.up.railway.app',
+        "http://localhost:8000"
+        
+    ]
+
+CSRF_TRUSTED_ORIGINS = ['https://kunle-portfolio-production.up.railway.app']
+CORS_ALLOW_CREDENTIALS=True
