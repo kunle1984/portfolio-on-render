@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'corsheaders',
-    'storages'
+    'storages',
 ]
 
 
