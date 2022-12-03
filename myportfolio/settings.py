@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'corsheaders',
+    'storages'
 ]
 
 
@@ -154,6 +155,13 @@ EMAIL_PORT =email_port
 EMAIL_USE_SSL = email_use_ssl
 EMAIL_HOST_USER =email_host_user
 EMAIL_HOST_PASSWORD =email_host_password
+
+#S3 setup
+AWS_QUERYSTRING_AUTH=False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID='AKIATRQH4QNYICQ6YVWF'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='kunleportfolio'
 
 # To email: contact form
 RECIPIENT_ADDRESS=recipient_address
